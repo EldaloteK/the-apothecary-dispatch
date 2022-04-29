@@ -43,3 +43,7 @@ RUN set -ex; \
 
 # Finalizing Flutter installation.
 RUN flutter doctor
+
+EXPOSE 38387
+
+# CMD [ "flutter", "run" , "-d", "web-server", "--web-port 38387", "--web-hostname 0.0.0.0"]
