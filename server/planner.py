@@ -4,6 +4,7 @@ from itertools import permutations
 
 class Planner():
     def __init__(self):
+        # Temporary hard coded graph TODO
         self.currentMap = {
             'K': {'D': 3, 'E': 9},
             'D': {'K': 3, 'A': 7, 'E': 3},
@@ -24,10 +25,12 @@ class Planner():
         }
 
     def pairwise(self, iterable):
+        """Take in iterable and return successive overlapping pairs in form of generators."""
         a = next(iterable)
         yield from ((a, a := b) for b in iterable)
 
-    def calculate_route(self, starting_node, ending_point):
+    def calculate_route(self, starting_node, ending_node):
+        """Take in starting and ending nodes and return Dijkstra's shortest path between."""
         # For each node in graph set distance to be inf.
         for node in self.currentMap:
             self.distances[node] = math.inf
@@ -58,7 +61,8 @@ class Planner():
                         heapq.heappush(pr_q, (connecting_node, temp_min_distance))
 
         path = []
-        final = ending_point
+        final = ending_node
+
         while final != starting_node:
             try:
                 path.insert(0, final)
@@ -74,6 +78,7 @@ class Planner():
         }
 
     def planner_actions(self, new_deliveries):
+        """Begin best delivery path actions and set path after calculations"""
         self.delivery_combinations = (list(permutations(new_deliveries)))
 
         for delivery_list in self.delivery_combinations:
@@ -97,6 +102,3 @@ class Planner():
                 self.min_delivery['path'] = delivery_path
             else:
                 delivery_path = []
-        # print(self.delivery_library)
-        print(self.min_delivery)
-

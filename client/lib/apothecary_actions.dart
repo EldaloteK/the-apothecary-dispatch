@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                   TextButton(
                     child: const Text('Graph'),
                     onPressed: () async {
-                      String resultGraphNew = await ApothecaryService().sendDeliveryList(deliveryPoints);
+                      List resultGraphNew = await ApothecaryService().sendDeliveryList(deliveryPoints);
                     },
                   ),
                 ],
