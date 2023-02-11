@@ -1,7 +1,4 @@
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
-import 'dart:async';
 import 'dart:convert';
 
 class ApothecaryService {
@@ -16,7 +13,7 @@ class ApothecaryService {
           return content;
         }
       } catch (error) {
-        throw (error);
+        rethrow;
       }
   }
 
@@ -39,7 +36,7 @@ class ApothecaryService {
           return sentContent;
         }
       } catch (error) {
-        throw (error);
+        rethrow;
       }
   }
 }

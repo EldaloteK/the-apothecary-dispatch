@@ -35,6 +35,7 @@ def create_graph():
             if delivery_index != 0:
                 delivery_subset = delivery_subset[1:]
             final_delivery_list += delivery_subset
+        print(final_delivery_list)
 
         # Return best path delivery list 
         return jsonify({
